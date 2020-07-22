@@ -1,32 +1,82 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Using moment to get todays date; month, day, and year
-    let todaysDate = moment().format('MMMM Do YYYY');;
-    console.log(todaysDate);
+    let todaysDate = moment().format('MMMM Do YYYY');
     $("#currentDay").text(todaysDate);
-
-
-
-
-    for (let i = 9; i < 10; i++) {
-            // Creates section for schedule
-    const rowEl = $('<div>').addClass("row time");
+    // Creates section for schedule
+    let rowEl = $('<div>').addClass("row time");
     // Creates column with time
-    const columnTime = $('<div>').addClass("col-2 hour");
+    let columnTime = $('<div>').addClass("col-2 hour time-block");
     // Creates column with input
-    const columnInput = $('<div>').addClass("col-8 columnInput");
-    // // Creates column with font awesome
-    // const columnFA = $("<div></div>").addClass("col-2 columnFA");
+    let columnInput = $('<div>').addClass("col-8 columnInput");
     // Creates button to save input
-    const saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
+    let saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
     saveButton.html('<i class="fa fa-save"></i>');
+
+
+
+
+    // for loop that creates rows in schedule for AM time
+    for (let i = 9; i < 12; i++) {
+
+        // Creates section for schedule
+        rowEl = $('<div>').addClass("row time");
+        // Creates column with time
+        columnTime = $('<div>').addClass("col-2 hour time-block");
+        // Creates column with input
+        columnInput = $('<div>').addClass("col-8 columnInput");
+        // Creates button to save input
+        saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
+        saveButton.html('<i class="fa fa-save"></i>');
 
         $("div.container").append(rowEl);
         rowEl.append(columnTime, columnInput, saveButton);
 
+
         columnTime.text(i + "AM");
-        
-    }
+
+    };
+    for (let i = 12; i < 13; i++) {
+
+        // Creates section for schedule
+        rowEl = $('<div>').addClass("row time");
+        // Creates column with time
+        columnTime = $('<div>').addClass("col-2 hour time-block");
+        // Creates column with input
+        columnInput = $('<div>').addClass("col-8 columnInput");
+        // Creates button to save input
+        saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
+        saveButton.html('<i class="fa fa-save"></i>');
+
+        $("div.container").append(rowEl);
+        rowEl.append(columnTime, columnInput, saveButton);
+
+
+        columnTime.text(i + "PM");
+
+    };
+
+    for (let i = 1; i < 6; i++) {
+
+        // Creates section for schedule
+        rowEl = $('<div>').addClass("row time");
+        // Creates column with time
+        columnTime = $('<div>').addClass("col-2 hour time-block");
+        // Creates column with input
+        columnInput = $('<div>').addClass("col-8 columnInput");
+        // Creates button to save input
+        saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
+        saveButton.html('<i class="fa fa-save"></i>');
+
+        $("div.container").append(rowEl);
+        rowEl.append(columnTime, columnInput, saveButton);
+
+
+        columnTime.text(i + "PM");
+        // console.log(subtractionEl);
+        // subtractionEl ++;
+
+    };
 
 
 });
