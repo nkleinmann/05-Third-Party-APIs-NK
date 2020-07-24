@@ -14,11 +14,8 @@ $(document).ready(function () {
     saveButton.html('<i class="fa fa-save"></i>');
 
 
-
-
     // for loop that creates rows in schedule for AM time
-    for (let i = 9; i < 12; i++) {
-
+    for (let i = 0; i < 9; i++) {
         // Creates section for schedule
         rowEl = $('<div>').addClass("row time");
         // Creates column with time
@@ -36,47 +33,8 @@ $(document).ready(function () {
         columnTime.text(i + "AM");
 
     };
-    for (let i = 12; i < 13; i++) {
-
-        // Creates section for schedule
-        rowEl = $('<div>').addClass("row time");
-        // Creates column with time
-        columnTime = $('<div>').addClass("col-2 hour time-block");
-        // Creates column with input
-        columnInput = $('<div>').addClass("col-8 columnInput");
-        // Creates button to save input
-        saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
-        saveButton.html('<i class="fa fa-save"></i>');
-
-        $("div.container").append(rowEl);
-        rowEl.append(columnTime, columnInput, saveButton);
 
 
-        columnTime.text(i + "PM");
-
-    };
-
-    for (let i = 1; i < 6; i++) {
-
-        // Creates section for schedule
-        rowEl = $('<div>').addClass("row time");
-        // Creates column with time
-        columnTime = $('<div>').addClass("col-2 hour time-block");
-        // Creates column with input
-        columnInput = $('<div>').addClass("col-8 columnInput");
-        // Creates button to save input
-        saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
-        saveButton.html('<i class="fa fa-save"></i>');
-
-        $("div.container").append(rowEl);
-        rowEl.append(columnTime, columnInput, saveButton);
-
-
-        columnTime.text(i + "PM");
-        // console.log(subtractionEl);
-        // subtractionEl ++;
-
-    };
 
 
 });
