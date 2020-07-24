@@ -13,9 +13,10 @@ $(document).ready(function () {
     let saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
     saveButton.html('<i class="fa fa-save"></i>');
 
+    timeArray = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
 
     // for loop that creates rows in schedule for AM time
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < timeArray.length; i++) {
         // Creates section for schedule
         rowEl = $('<div>').addClass("row time");
         // Creates column with time
@@ -30,7 +31,7 @@ $(document).ready(function () {
         rowEl.append(columnTime, columnInput, saveButton);
 
 
-        columnTime.text(i + "AM");
+        columnTime.text(timeArray[i]);
 
     };
 
