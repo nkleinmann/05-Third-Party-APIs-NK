@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // localStorage.empty();
     // restart();
-    // loadLS();
+    loadLs();
 
     // Using moment to get todays date; month, day, and year
     let todaysDate = moment().format('MMMM Do YYYY');
@@ -71,7 +71,7 @@ $(document).ready(function () {
     // event listener on save button
     $(".saveBtn").on("click", function (event) {
         // console.log("save");
-        let taskObj = {};
+        let taskObj = [];
 
         $(".columnInput").each(function(currentIndex, currentEl) {
             taskObj[currentIndex] = $(currentEl).val().trim(); // adds key value pairs to object
@@ -80,35 +80,39 @@ $(document).ready(function () {
         
         console.log(taskObj);
         localStorage.setItem("dailyPlan", JSON.stringify(taskObj));
-        // storeLS(taskObj);
         
       
     });
 
-    // function storeLS(tasks) {
-    //     localStorage.setItem("dailyPlan", JSON.stringify(taskObj));
-    // }
 
     // loads dailyPlan from local storage and displays on screen
-    function loadLS() {
-        let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
-        if (storedPlan) {
-            taskObj = storedPlan;
+    function loadLs() {
+        for (let i = 0; i < 10; i++) {
+            let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));  
+            $(".columnInput " + (i+8)).text(storedPlan[i]);
         }
+        // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
+        // if (storedPlan) {
+        //     $(".columnInput").val(currentIndex.currentEl);
+        // }
     }
 
-    loadLS();
+    
     
     // }
-    // function restart() {
-    //     let storedTasks = JSON.parse(localStorage.getItem(taskObj));
-    //     if (storedTasks !== null) {
-    //         taskObj = storedTasks;
-    //     }
-        
-    // }
 
-    //     // loadLS(); don't do this every time
+
+//     function restart(taskObj) {
+//         let storedTasks = JSON.parse(localStorage.getItem(taskObj));
+//         if (storedTasks !== null) {
+//             $(".columnInput").each(function(currentIndex, currentEl) {
+//                  $(currentEl).append(taskObj[currentIndex]).val();
+//                  console.log(currentIndex);
+//                  console.log(currentEl);
+//         });
+//     }
+// }
+          
 
 
 });
