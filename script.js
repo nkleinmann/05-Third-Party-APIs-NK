@@ -1,24 +1,10 @@
 $(document).ready(function () {
     // localStorage.empty();
+    restart();
 
     // Using moment to get todays date; month, day, and year
     let todaysDate = moment().format('MMMM Do YYYY');
-    $("#currentDay").text(todaysDate);
-
-
-    // // sets empty object
-    // let textInput = {
-    //     9: "",
-    //     10: "",
-    //     11: "",
-    //     12: "",
-    //     13: "",
-    //     14: "",
-    //     15: "",
-    //     16: "",
-    //     17: "",
-    // };
-  
+    $("#currentDay").text(todaysDate);  
 
     // sets time array
     timeArray = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
@@ -93,12 +79,12 @@ $(document).ready(function () {
             let input = $(currentEl);
 
             // let taskObj = {"data-time", "tasks"};
-            taskObj.currentIndex = $(".columnInput").val().trim()
+            taskObj[currentIndex] = $(".columnInput").val().trim()
             // console.log(textInput);
         });
         
         
-        // console.log(textArea);
+        console.log(taskObj);
         storeLS(taskObj);
         
       
@@ -106,38 +92,22 @@ $(document).ready(function () {
 
     function storeLS(tasks) {
         localStorage.setItem("dailyPlan", JSON.stringify(tasks));
-        // textInputArray = JSON.parse(localStorage.getItem("planner"));
-        // let dailyPlan = $(".columnInput").val();
-        // let text = { dailyPlan };
-
-        // if (!textInputArray) {
-        //     textInputArray = [];
-        // }
-        // textInputArray.push(text);
-        // localStorage.setItem("planner", JSON.stringify(textInputArray));
-        // console.log(textInputArray);
-        // console.log(dailyPlan);
     }
+
     // loads dailyPlan from local storage and displays on screen
     function loadLS() {
         const storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
         if (storedPlan) {
             storedPlan = textInput;
         }
-        //     textInputArray = localStorage.getItem("planner");
-        //     if (!textInputArray) {
-        //         textInputArray = [];
-        //     }
-        //     else {
-        //         textInput = JSON.parse(textInputArray);
-        //     }
-
-        //     // loops through textInputArray and displays daily plans on page
-        //     for (let i = 0; i < textInputArray.length; i++) {
-        //         $(".textarea").te
-        //     }
-
-        // console.log(textInput);
+    
+    }
+    function restart() {
+        let storedTasks = JSON.parse(localStorage.getItem("dailyPlan"));
+        if (storedTasks !== null) {
+            taskObj = storedTasks;
+        }
+        
     }
 
     //    // store text input into object when save button clicked
