@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    // calls function to load local storage and display on the screen
-    loadLs();
+    
 
     // Using moment to get todays date; month, day, and year
     let todaysDate = moment().format('MMMM Do YYYY');
@@ -90,9 +89,8 @@ $(document).ready(function () {
         if (storedPlan !== null) {
                         
         for (let i = 0; i < 10; i++) {
-            console.log(".columnInput" + (i + 8));
-            // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));  
-            $(".columnInput" + (i+8)).text(storedPlan[i]);
+        
+            $(".columnInput" + (i+9)).text(storedPlan[i]);
             
         }
         // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
@@ -101,6 +99,8 @@ $(document).ready(function () {
         // }
     }
 }
+// calls function to load local storage and displays on the screen
+loadLs();
 
     
     
