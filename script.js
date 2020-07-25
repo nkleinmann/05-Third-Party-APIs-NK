@@ -87,8 +87,11 @@ $(document).ready(function () {
 
     // loads dailyPlan from local storage and displays on screen
     function loadLs() {
+        let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
+        if (storedPlan !== null) {
+                        
         for (let i = 0; i < 10; i++) {
-            let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));  
+            // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));  
             $(".columnInput " + (i+8)).text(storedPlan[i]);
         }
         // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
@@ -96,6 +99,7 @@ $(document).ready(function () {
         //     $(".columnInput").val(currentIndex.currentEl);
         // }
     }
+}
 
     
     
