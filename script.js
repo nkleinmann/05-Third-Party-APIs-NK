@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    // localStorage.empty();
-    // restart();
+    // calls function to load local storage and display on the screen
     loadLs();
 
     // Using moment to get todays date; month, day, and year
@@ -30,7 +29,7 @@ $(document).ready(function () {
         // Creates column with time
         let columnTime = $('<div>').addClass("col-2 hour time-block ").data("value", newTime);
         // Creates column with input
-        let columnInput = $('<textarea>').addClass("col-8 columnInput "+ newTime);
+        let columnInput = $('<textarea>').addClass("col-8 columnInput columnInput"+newTime);
         // Creates button to save input
         let saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
         saveButton.html('<i class="fa fa-save"></i>');
@@ -91,8 +90,10 @@ $(document).ready(function () {
         if (storedPlan !== null) {
                         
         for (let i = 0; i < 10; i++) {
+            console.log(".columnInput" + (i + 8));
             // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));  
-            $(".columnInput " + (i+8)).text(storedPlan[i]);
+            $(".columnInput" + (i+8)).text(storedPlan[i]);
+            
         }
         // let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
         // if (storedPlan) {
@@ -104,18 +105,6 @@ $(document).ready(function () {
     
     
     // }
-
-
-//     function restart(taskObj) {
-//         let storedTasks = JSON.parse(localStorage.getItem(taskObj));
-//         if (storedTasks !== null) {
-//             $(".columnInput").each(function(currentIndex, currentEl) {
-//                  $(currentEl).append(taskObj[currentIndex]).val();
-//                  console.log(currentIndex);
-//                  console.log(currentEl);
-//         });
-//     }
-// }
           
 
 
