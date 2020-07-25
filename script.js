@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // localStorage.empty();
-    restart();
+    // restart();
+    // loadLS();
 
     // Using moment to get todays date; month, day, and year
     let todaysDate = moment().format('MMMM Do YYYY');
@@ -78,35 +79,35 @@ $(document).ready(function () {
         
         
         console.log(taskObj);
-        storeLS(taskObj);
+        localStorage.setItem("dailyPlan", JSON.stringify(taskObj));
+        // storeLS(taskObj);
         
       
     });
 
-    function storeLS(tasks) {
-        localStorage.setItem("dailyPlan", JSON.stringify(tasks));
-    }
+    // function storeLS(tasks) {
+    //     localStorage.setItem("dailyPlan", JSON.stringify(taskObj));
+    // }
 
     // loads dailyPlan from local storage and displays on screen
     function loadLS() {
-        const storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
+        let storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
         if (storedPlan) {
-            storedPlan = textInput;
+            taskObj = storedPlan;
         }
-    
-    }
-    function restart() {
-        let storedTasks = JSON.parse(localStorage.getItem("dailyPlan"));
-        if (storedTasks !== null) {
-            taskObj = storedTasks;
-        }
-        
     }
 
-    //    // store text input into object when save button clicked
-    //    // locate value and save into variable
-    //    // save info into object in key value pair
-    //     storeLS();
+    loadLS();
+    
+    // }
+    // function restart() {
+    //     let storedTasks = JSON.parse(localStorage.getItem(taskObj));
+    //     if (storedTasks !== null) {
+    //         taskObj = storedTasks;
+    //     }
+        
+    // }
+
     //     // loadLS(); don't do this every time
 
 
