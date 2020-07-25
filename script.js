@@ -73,14 +73,7 @@ $(document).ready(function () {
         let taskObj = {};
 
         $(".columnInput").each(function(currentIndex, currentEl) {
-            console.log(currentIndex);
-            console.log(currentEl);
-
-            let input = $(currentEl);
-
-            // let taskObj = {"data-time", "tasks"};
-            taskObj[currentIndex] = $(".columnInput").val().trim()
-            // console.log(textInput);
+            taskObj[currentIndex] = $(currentEl).val().trim(); // adds key value pairs to object
         });
         
         
