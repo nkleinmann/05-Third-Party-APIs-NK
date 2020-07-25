@@ -5,11 +5,24 @@ $(document).ready(function () {
     let todaysDate = moment().format('MMMM Do YYYY');
     $("#currentDay").text(todaysDate);
 
-    // Getting current time for color coding
-    let currentTime = moment().format("HH:mm");
-    console.log(currentTime);
 
+    // // sets empty object
+    // let textInput = {
+    //     9: "",
+    //     10: "",
+    //     11: "",
+    //     12: "",
+    //     13: "",
+    //     14: "",
+    //     15: "",
+    //     16: "",
+    //     17: "",
+    // };
+  
+
+    // sets time array
     timeArray = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
+    
 
     // for loop that creates rows in schedule for time
     for (let i = 0; i < timeArray.length; i++) {
@@ -20,97 +33,118 @@ $(document).ready(function () {
         let hourArray = timeArray[i].split(" ");
         let hour = hourArray[0];
         let newTime = hour;
+        
+        // console.log(textInput);
         if (hour < 6) {
             newTime = parseInt(hour) + 12;
         }
-        console.log(newTime);
        
 
         // Creates column with time
-        let columnTime = $('<div>').addClass("col-2 hour time-block").data("value", newTime);
+        let columnTime = $('<div>').addClass("col-2 hour time-block ").data("value", newTime);
         // Creates column with input
-        let columnInput = $('<textarea>').addClass("col-8 columnInput");
+        let columnInput = $('<textarea>').addClass("col-8 columnInput "+ newTime);
         // Creates button to save input
         let saveButton = $('<button>').addClass("col-2 saveBtn i:hover");
         saveButton.html('<i class="fa fa-save"></i>');
 
+        // adds HTML to the page
         $("div.container").append(rowEl);
         rowEl.append(columnTime, columnInput, saveButton);
 
 
+        // adds correct times from my timeArray to the screen
         columnTime.text(timeArray[i]);
 
     };
 
-    // applying right class for colors
+    // applying right class for colors based on past, current, and future times
     function fctClass() {
-        console.log(moment().hour());
-        $(".time-block").each(function() {
-            
+        // console.log(moment().hour());
+        $(".time-block").each(function () {
+
             let textArea = $(this).siblings(".columnInput");
             let textAreaHour = $(this).data("value");
             if (textAreaHour < moment().hour()) {
-                console.log("Past");
                 textArea.addClass("past");
             }
             if (textAreaHour == moment().hour()) {
-                console.log("present");
                 textArea.addClass("present");
             }
             if (textAreaHour > moment().hour()) {
-                console.log("future");
                 textArea.addClass("future");
             }
         });
     }
+    // calling my function to create correct colors in text area
     fctClass();
 
-    // sets empty array
-    let textInputArray = [];
 
-    // storing input into local storage
-    // xt(textInputArray[i].text);
-    //         console.log(textInputArray[i].text);
 
-function storeLS() {
-        textInputArray = JSON.parse(localStorage.getItem("planner"));
-        let dailyPlan = $(".columnInput").val();
-        let text = { dailyPlan };
+    // event listener on save button
+    $(".saveBtn").on("click", function (event) {
+        // console.log("save");
+        let taskObj = {};
 
-        if (!textInputArray) {
-            textInputArray = [];
-        }
-        textInputArray.push(text);
-        localStorage.setItem("planner", JSON.stringify(textInputArray));
-        console.log(textInputArray);
-        console.log(dailyPlan);
+        $(".columnInput").each(function(currentIndex, currentEl) {
+            console.log(currentIndex);
+            console.log(currentEl);
+
+            let input = $(currentEl);
+
+            // let taskObj = {"data-time", "tasks"};
+            taskObj.currentIndex = $(".columnInput").val().trim()
+            // console.log(textInput);
+        });
+        
+        
+        // console.log(textArea);
+        storeLS(taskObj);
+        
+      
+    });
+
+    function storeLS(tasks) {
+        localStorage.setItem("dailyPlan", JSON.stringify(tasks));
+        // textInputArray = JSON.parse(localStorage.getItem("planner"));
+        // let dailyPlan = $(".columnInput").val();
+        // let text = { dailyPlan };
+
+        // if (!textInputArray) {
+        //     textInputArray = [];
+        // }
+        // textInputArray.push(text);
+        // localStorage.setItem("planner", JSON.stringify(textInputArray));
+        // console.log(textInputArray);
+        // console.log(dailyPlan);
     }
     // loads dailyPlan from local storage and displays on screen
     function loadLS() {
-        textInputArray = localStorage.getItem("planner");
-        if (!textInputArray) {
-            textInputArray = [];
+        const storedPlan = JSON.parse(localStorage.getItem("dailyPlan"));
+        if (storedPlan) {
+            storedPlan = textInput;
         }
-        else {
-            textInput = JSON.parse(textInputArray);
-        }
+        //     textInputArray = localStorage.getItem("planner");
+        //     if (!textInputArray) {
+        //         textInputArray = [];
+        //     }
+        //     else {
+        //         textInput = JSON.parse(textInputArray);
+        //     }
 
-        // loops through textInputArray and displays daily plans on page
-        for (let i = 0; i < textInputArray.length; i++) {
-            $(".textarea").te
-        }
-        
-        console.log(textInputArray);
+        //     // loops through textInputArray and displays daily plans on page
+        //     for (let i = 0; i < textInputArray.length; i++) {
+        //         $(".textarea").te
+        //     }
+
+        // console.log(textInput);
     }
 
-    // event listener on save button
-    $(".saveBtn").on("click", function () {
-        // event.preventDefault();
-        storeLS();
-        loadLS();
-    })
-
-
+    //    // store text input into object when save button clicked
+    //    // locate value and save into variable
+    //    // save info into object in key value pair
+    //     storeLS();
+    //     // loadLS(); don't do this every time
 
 
 });
