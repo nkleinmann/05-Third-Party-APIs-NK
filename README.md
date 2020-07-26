@@ -12,7 +12,7 @@ Parts of Website:
 
 Challenges: The most difficult part for me was working with local storage in this assignment.  It took some time to correctly get the text in my <textarea> element to add to the correct index in the array, store that array in local storage, then display text back on screen (in correct order!). After some study groups and console logs, the daily planner works. 
 
-Here is the link to my application: (View my Daily Planner)[https://nkleinmann.github.io/05-Third-Party-APIs-NK/]
+Here is the link to my application: [View my Daily Planner](https://nkleinmann.github.io/05-Third-Party-APIs-NK/)
 
 Screenshot of Website:
 ![Screen Shot 2020-07-25 at 7 56 20 PM](https://user-images.githubusercontent.com/65608809/88468403-0c5a5000-ceb1-11ea-9c0b-a3c7c2aba787.png)
