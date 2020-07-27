@@ -68,7 +68,7 @@ $(document).ready(function () {
 
     // event listener on save button
     $(".saveBtn").on("click", function (event) {
-        
+        event.preventDefault();
         let taskObj = [];
 
         $(".columnInput").each(function (currentIndex, currentEl) {
